@@ -69,9 +69,8 @@ const setCookieJar =  function () {
 
 setCookieJar()
 .then(() => {
-    app.listen(3000, () => {
-        console.log('App started');
-    });
+    app.listen(3000);
+    console.log('App started');
 })
 .catch(console.log)
 
