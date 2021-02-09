@@ -5,7 +5,7 @@ axiosCookieJarSupport(axios);
  
 const cookieJar = new tough.CookieJar();
 
-let cookieStoreTime = new Date(); 
+let cookieStoreTime; 
 
 
 
@@ -48,6 +48,10 @@ app.get('/nse/price', function (req, res) {
 
 const nseAPI = async function ({resource})  {
     let currentTime = new Date();
+    if (!cookieStoreTime) {
+        await setCookieJar();
+        cookieStoreTime = currentTime;
+    }
     if (currentTime - cookieStoreTime > 180000) {
         await setCookieJar();
         cookieStoreTime = currentTime;
@@ -67,11 +71,7 @@ const setCookieJar =  function () {
 }
 
 
-setCookieJar()
-.then(() => {
-    app.listen(3000);
-    console.log('App started');
-})
-.catch(console.log)
+app.listen(3000);
+console.log('App started');
 
  
