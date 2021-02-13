@@ -7,6 +7,10 @@
 
 This will start project on port 3000, if you are windows machine you will be prompts to allow port access. you should allow it.
 
+## APIs:
+### localhost:3000?symbol={TCS}&section=trade_info
+
+
 ## Access the running project from Internet.
  If you want to use this API, in your services you may need to use `ngrok` for it.
  1. install the ngrok
